@@ -22,12 +22,12 @@ public class HeaderRestController {
 
     @RequestMapping(value = "", method = RequestMethod.GET, produces = "text/plain")
     @ResponseBody
-    public ResponseEntity makeExceptionLog(@RequestHeader Map<String, String> headers) {
+    public String makeExceptionLog(@RequestBody String body, @RequestHeader Map<String, String> headers) {
         headers.forEach((key, value) -> {
             log.info(String.format("Header '%s' = %s", key, value));
         });
 
-        return new ResponseEntity<String>(String.format("Listed %d headers", headers.size()), HttpStatus.OK);
+        return "check log";
     }
 
 }
